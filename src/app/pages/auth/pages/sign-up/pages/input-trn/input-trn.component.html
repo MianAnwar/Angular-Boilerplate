@@ -1,0 +1,23 @@
+<div class="signUp-stepper-widget-head">
+  <h2>Setting up your Account</h2>
+  <p>
+    Please verify your identity by <br />
+    entering your TRN below
+  </p>
+</div>
+<div class="signUp-stepper-widget-form signUp-stepper-widget-step1-form">
+  <form #ngForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="">TRN</label>
+    <input
+      (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+      (keyup)="maskInput()"
+      name="trn"
+      formControlName="trn"
+      type="text"
+      maxlength="11"
+      class="form-control"
+      placeholder="000-000-000"
+    />
+    <button [disabled]="!form.valid" type="submit" class="btn btn-gradient">Next</button>
+  </form>
+</div>

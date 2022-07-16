@@ -1,0 +1,131 @@
+<div class="page-disabled-overlay" style="display: none"></div>
+
+<ng-container *ngFor="let dashboardItem of dashboardData?.dashboardItems">
+  <!-- <ng-template *ngTemplateOutlet="templateMapping[dashboardItem.type]; context: { $implicit: dashboardItem }">
+  </ng-template> -->
+</ng-container>
+
+<ng-template #Wallet let-dashboardItem>
+  <app-header-card *ngIf="!isSearchpage" [balance]="balance"></app-header-card>
+  <app-trending-search *ngIf="isSearchpage"></app-trending-search>
+</ng-template>
+
+<ng-template #Banners let-dashboardItem>
+  <div class="row">
+    <div class="col">
+      <div class="mycash-wallet-slider">
+        <!-- <app-banner [bannerType]="IMAGE_ONLY" [inputBanners]="dashboardItem?.data?.banners"></app-banner> -->
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #Shortcuts let-dashboardItem>
+  <app-widget [showBrowseAllLink]="true" [groupedWidgets]="shortcutsGroup" [screen]="HOME"></app-widget>
+</ng-template>
+
+<ng-template #TopPicks let-dashboardItem>
+  <app-widget *ngIf="showTopPicks" [showBrowseAllLink]="false" [groupedWidgets]="topPickGroup" [screen]="HOME">
+  </app-widget>
+</ng-template>
+
+<ng-template #PaymentList let-dashboardItem>
+  <div class="row" *ngIf="scheduledPayments && scheduledPayments?.data?.paymentList?.length">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="title-container">
+        <h3 class="sub-title">{{ scheduledPayments?.cardName }}</h3>
+      </div>
+      <div class="card-tiles scroll-horizontal">
+        <div class="card_tile" *ngFor="let schedulePayment of scheduledPayments?.data?.paymentList">
+          <div class="card_icon">
+            <img src="/assets/images/electricity-bill-icon.svg" alt="Electricity Bill" />
+          </div>
+          <div class="card_body">
+            <h5>{{ schedulePayment?.type }}</h5>
+            <!-- <p>
+              {{ defaultCurrency
+              }}<span class="card_amount">{{
+                schedulePayment?.totalAmount | mycashCurrencyFormat: defaultCurrency:hideSymbol
+                }}</span>
+            </p> -->
+            <!-- <p class="card_footer">
+              Scheduled on {{ schedulePayment?.nextRunDate | mycashDateFormat: YYYY__MM__DD }}
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #InviteList let-dashboardItem>
+  <div class="row utility-referrals">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="title-container referrals-title-container">
+        <h3 class="sub-title">{{ inviteUsers?.cardName }}</h3>
+        <p class="total-earning">
+          - Total earning:
+          <!-- <span class="earning"> {{ inviteUsers?.data?.inviteList?.referralEarnAmount }} pts</span> -->
+        </p>
+      </div>
+      <!-- <div class="my-referrals-invite" *ngIf="!inviteUsers || !inviteUsers?.data?.inviteList?.inviteItems?.length">
+        <button type="" class="btn btn-add" [routerLink]="InviteFriendPath">
+          <span class="btn-add-icon">
+            <img src="/assets/images/add-round-icon.svg" alt="" />
+          </span>
+          Invite a Friend
+        </button>
+      </div> -->
+      <!-- <div class="card-tiles scroll-horizontal" *ngIf="inviteUsers?.data?.inviteList?.inviteItems?.length">
+        <div class="card_tile" *ngFor="let inviteUser of inviteUsers?.data?.inviteList?.inviteItems">
+          <div class="card_avatar">
+            <img src="/assets/images/avatar.jpg" alt="Damarae" />
+          </div>
+          <div class="card_body">
+            <h5>{{ inviteUser?.userName }}</h5>
+            <p>{{ inviteUser?.userNumber }}</p>
+            <p class="card_footer">Invite Sent 28h ago</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #BillingList let-dashboardItem>
+  <div class="row utility-referrals">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="title-container">
+        <h3 class="sub-title">{{ allBills?.cardName }}</h3>
+        <a [routerLink]="billPaymentPath" class="link" *ngIf="allBills?.data?.billingList?.length">
+          My Bills
+        </a>
+      </div>
+      <div class="utility-bills-add" *ngIf="!allBills || !allBills?.data?.billingList?.length">
+        <button type="" class="btn btn-add" [routerLink]="billPaymentPath">
+          <span class="btn-add-icon">
+            <img src="/assets/images/add-round-icon.svg" alt="" />
+          </span>
+          Add your first bill
+        </button>
+      </div>
+    </div>
+    <div class="card-tiles scroll-horizontal" *ngIf="allBills?.data?.billingList?.length">
+      <div class="card_tile" *ngFor="let bill of allBills?.data?.billingList">
+        <div class="card_icon">
+          <img src="/assets/images/electricity-bill-icon.svg" alt="Electricity Bill" />
+        </div>
+        <div class="card_body">
+          <h5>{{ bill?.billCategory }}</h5>
+          <p>
+            {{ defaultCurrency }}
+            <span class="card_amount">Bill PAyed</span>
+          </p>
+          <p class="card_footer">Due on </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- <app-loading-screen *ngIf="loader.widgets"> </app-loading-screen> -->

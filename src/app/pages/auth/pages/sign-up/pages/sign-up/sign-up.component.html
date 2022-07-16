@@ -1,0 +1,42 @@
+<div class="page-widget signUp-stepper-widget">
+  <div class="container-fluid">
+    <div class="signUp-stepper-widget-body">
+      <div *ngIf="backOption" class="back-btn">
+        <button *ngIf="stepperCount !== 1" (click)="back()" class="btn">
+          <img src="assets/images/left-arrow-icon.svg" />
+        </button>
+        <div class="steps-conter-widget">Step {{ stepperCount }}/{{ totalSteps }}</div>
+      </div>
+
+      <div *ngIf="!backOption" class="back-btn">
+        <div class="steps-conter-widget">Step {{ stepperCount }}/{{ totalSteps }}</div>
+      </div>
+      <div class="progress" style="height: 4px">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          [style.width]="stepperWidth"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+
+      <app-input-trn
+        *ngIf="stepperCount === 1"
+        (NEXT_EVENT)="handleNextClickFromTRN($event)"
+      ></app-input-trn>
+      <app-input-basic-info
+        [submitted]="trnSubmitted"
+        *ngIf="stepperCount === 2"
+        (NEXT_EVENT)="handleNextClickFromBasicInfoForm($event)"
+      ></app-input-basic-info>
+
+      <app-pin-setting
+        [submitted]="pinSubmitted"
+        (NEXT_EVENT)="handleNextClickFromPinSetting($event)"
+        *ngIf="stepperCount === 3"
+      ></app-pin-setting>
+    </div>
+  </div>
+</div>

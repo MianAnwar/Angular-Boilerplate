@@ -1,0 +1,53 @@
+<div class="signUp-stepper-widget-head">
+  <h2>A little bit of info</h2>
+  <p>
+    The details you enter should exactly <br />
+    match your TRN
+  </p>
+</div>
+<div class="signUp-stepper-widget-form signUp-stepper-widget-step2-form">
+  <form #ngForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-6 left">
+        <label for="">First Name</label>
+        <input
+          onkeydown="return /[a-z]/i.test(event.key)"
+          type="text"
+          name="firstName"
+          formControlName="firstName"
+          class="form-control"
+          placeholder="John"
+        />
+      </div>
+      <div class="col-6 right">
+        <label for="">Last Name</label>
+        <input
+          onkeydown="return /[a-z]/i.test(event.key)"
+          type="text"
+          name="lastName"
+          formControlName="lastName"
+          class="form-control"
+          placeholder="Doe"
+        />
+      </div>
+      <div class="col-12 right">
+        <label for="">Date of Birth</label>
+        <input
+          name="dob"
+          formControlName="dob"
+          type="date"
+          class="form-control"
+          placeholder="Date of Birth"
+        />
+      </div>
+    </div>
+
+    <button
+      [disabled]="(!form.valid && !submitted) || submitted"
+      type="submit"
+      class="btn btn-gradient"
+    >
+      Next
+    </button>
+  </form>
+</div>

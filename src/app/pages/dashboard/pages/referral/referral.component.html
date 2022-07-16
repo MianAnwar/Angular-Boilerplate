@@ -1,0 +1,63 @@
+<div class="page-widget">
+  <div class="page-widget-body">
+    <!-- <app-nav [backButton]="true" navText="Referral" (backEvent)="back()"></app-nav> -->
+
+    <div class="total-earning-container row">
+      <div class="col-sm-12">
+        <div class="total-earning total-earning-active">
+          <h4>J$ <span>0</span></h4>
+          <p>My Total Earning</p>
+        </div>
+        <h6>
+          Share your referral code and <br />
+          start earning
+        </h6>
+        <div class="generate-bar">
+          <div class="generate-bar_content">
+            <span class="generate-bar_link">http://my.cash/clarap302lkf</span>
+          </div>
+          <div class="generate-bar_icon">
+            <img src="/assets/images/copy-icon.svg" alt="copy" />
+          </div>
+        </div>
+        <div class="generate-bar">
+          <div class="generate-bar_content">
+            <span class="generate-bar_alphanumeric">CLARAP302LKF</span>
+          </div>
+          <div class="generate-bar_icon">
+            <img src="/assets/images/copy-icon.svg" alt="copy" />
+          </div>
+        </div>
+        <p>When your friend signs up for a MyCash account, they get J$ 50 and you get J$ 100!</p>
+      </div>
+    </div>
+    <div class="row invites-container">
+      <div class="col-6">
+        <div class="card-tile">
+          <h2 class="invites_count">0</h2>
+          <div class="invites_content">
+            <h6>Pending Invites</h6>
+            <div class="invites_icon">
+              <img src="/assets/images/pending-invite-icon.svg" alt="copy" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card-tile">
+          <h2 class="invites_count_active">2</h2>
+          <div class="invites_content">
+            <h6>Accepted Invites</h6>
+            <div class="invites_icon">
+              <img src="/assets/images/accepted-invite-icon.svg" alt="copy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pageFooter">
+      <button (click)="invite()" type="submit" class="btn btn-gradient">Invite Now</button>
+    </div>
+  </div>
+</div>

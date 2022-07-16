@@ -1,0 +1,75 @@
+<div class="notification-widget page-widget">
+  <div class="notification-widget-body page-widget-body">
+    <!-- <app-nav backButton="true" (backEvent)="back()" [navText]="header"></app-nav> -->
+
+    <!-- Search Start -->
+    <div class="search-container">
+      <input type="text" class="form-control search-input" id="searchInput" [(ngModel)]="searchText"
+        (keyup)="search(searchText)" placeholder="Search for anything" />
+      <span class="search-clear-btn">
+        <i class="icon-cross-round" (click)="clearSearchText()"></i>
+      </span>
+    </div>
+    <!-- Search End -->
+
+    <!-- Balance Card Start -->
+    <div class="card-tiles balance-card">
+      <div class="card_tile">
+        <div class="card_body">
+          <div class="card_content">
+            <h6>MyCash Balance</h6>
+            <h4>
+              J$<span class="amount">{{ balance && balance?.amount }}</span><span class="amount_decimal"> .{{ balance &&
+                balance?.decimal }}</span>
+            </h4>
+            <p>
+              Remaining limit today J$
+              <span>{{ accountDetails && accountDetails!.remainingDailyTransferLimit }}</span>
+            </p>
+          </div>
+        </div>
+        <!-- <div class="card_icon">
+          <button class="btn" (click)="print()">
+            <i class="icon-download"></i>
+          </button>
+        </div> -->
+      </div>
+    </div>
+    <!-- Balance Card End -->
+
+    <div class="badge-btn-container">
+      <button (click)="showFilterByModal()" class="btn">
+        <i class="icon-all"></i>
+        <span>{{ TxnTypefilterText }}</span>
+      </button>
+      <button (click)="showCalenderModal()" class="btn btn-calendar">
+        <i class="icon-calendar"></i>
+        <span *ngIf="datesfilterGroup !== 'Custom'">{{ datesfilterGroup }}</span>
+        <span *ngIf="datesfilterGroup === 'Custom'">{{ datesfilterText }}</span>
+      </button>
+    </div>
+
+    <div *ngIf="!detailView">
+      <!-- MyCash Wallet Slider Start -->
+      <!--   <div class="row">
+                <div class="col">
+                    <div class="mycash-wallet-slider">
+                        <app-banner [bannerType]="IMAGE_ONLY" [serviceUrl]="'getBanners'"></app-banner>
+                    </div>
+                </div>
+            </div> -->
+      <!-- MyCash Wallet Slider End -->
+
+      <!-- Transaction History List Start -->
+      <div class="notification-list trans-history-list">
+        <ul>
+          <li *ngFor="let x of transactionsHistory && transactionsHistory.transHistory">
+            <p class="trans-history-list_date">{{ x.date }}</p>
+            <app-grouped-transactions [transactionsHistory]="x.history"></app-grouped-transactions>
+          </li>
+        </ul>
+      </div>
+      <!-- Transaction History List End -->
+    </div>
+  </div>
+</div>

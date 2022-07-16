@@ -1,0 +1,42 @@
+<div class="cashIn-widget">
+  <!-- <app-nav [backButton]="true" [navText]="HeaderText" (backEvent)="back()"></app-nav> -->
+  <div class="cashIn-widget-body">
+    <div class="cashIn-widget-list accountProfile">
+      <div (click)="editProfile()" class="cashIn-widget-list-item">
+        <div class="col">
+          <div class="d-flex user-info align-items-center">
+            <a [routerLink]="['/account']"><img src="/assets/images/user-image.svg" alt="" /></a>
+            <div>
+              <p *ngIf="userData" class="secondary-color">
+                {{ userData.firstName }} {{ userData.lastName }}
+                <span>{{ userData.phoneNumber }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-upgrade btn">
+          <i hidden class="icon-qr-full"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="cashIn-widget-list UpgradeItem">
+      <div class="cashIn-widget-list-item">
+        <div>
+          <p class="cashIn-widget-list-item-txt">
+            MyCash Basic Account <span>Upgrade for greater benefits</span>
+          </p>
+        </div>
+        <button (click)="upgradeAccount()" type="button" class="btn-upgrade">Upgrade</button>
+      </div>
+    </div>
+
+    <!-- <app-button-stack header="Account" [buttons]="accountBtns"></app-button-stack>
+
+    <app-button-stack header="Account Security" [buttons]="securityBtns"></app-button-stack>
+
+    <app-button-stack header="Support" [buttons]="supportBtns"></app-button-stack> -->
+
+    <button (click)="logout()" type="button" class="btn btn-logout">Logout</button>
+  </div>
+</div>

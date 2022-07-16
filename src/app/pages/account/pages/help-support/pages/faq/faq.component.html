@@ -1,0 +1,22 @@
+<!-- <app-nav (backEvent)="back()" backButton="true" [navText]="header"></app-nav> -->
+<div *ngIf="searchView" class="search-container">
+  <input type="text" class="form-control search-input" id="searchInput" placeholder="Search" />
+  <span (click)="hideSearch()" class="search-clear-btn">
+    <i class="icon-cross-round"></i>
+  </span>
+</div>
+<div *ngIf="loading; else faq">
+  <!-- <app-loading-screen></app-loading-screen> -->
+</div>
+<ng-template #faq>
+  <!-- FAQ html start -->
+  <div *ngFor="let faq of faqIterator">
+    <!-- <app-text-accordion [header]="faq.categoryName" [faqs]="faq.faqs"></app-text-accordion> -->
+    <!-- FAQ html start -->
+
+    <!-- FAQ html start -->
+    <br />
+  </div>
+
+  <!-- FAQ html start -->
+</ng-template>

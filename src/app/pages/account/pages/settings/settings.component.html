@@ -1,0 +1,55 @@
+<div class="settings-widget">
+  <div class="settings-widget-body">
+    <!-- <app-nav (backEvent)="back()" backButton="true" [navText]="header"></app-nav> -->
+    <ul *ngIf="!loading; else loader" class="list-item-widget">
+      <li *ngIf="!hasMaxAccount" class="list-item UpgradeItem">
+        <div class="list-item-text">
+          <h4>MyCash Basic</h4>
+          Upgrade for greater benefits
+        </div>
+        <div class="list-item-btn">
+          <button (click)="upgradeAccount()" class="btn">Upgrade</button>
+        </div>
+      </li>
+      <li *ngIf="hasMaxAccount" class="list-item">
+        <div class="list-item-icon">
+          <img src="assets/images/red-map-icon.svg" />
+        </div>
+        <div class="list-item-text">
+          <h4>MyCash MAX Account</h4>
+        </div>
+      </li>
+      <li *ngIf="hasMaxAccount" class="list-item list-item-toggale">
+        <div class="list-item-icon">
+          <img src="assets/images/remittance-icon.svg" />
+        </div>
+        <div class="list-item-text">International Remittance</div>
+        <div class="form-check form-switch switch-field">
+          <!-- <input class="form-check-input switch-input" name="rewardUsed" (change)="toggleInternationRemittance()"
+            [checked]="accountDetails.internationalRemittance" type="checkbox" id="flexSwitchCheckDefault" /> -->
+        </div>
+      </li>
+      <li class="list-item price">
+        <div class="list-item-text">
+          <h4>Wallet Balance Limit</h4>
+          <p *ngIf="!hasMaxAccount">Upgrade to MyCash MAX for an enhanced limit of J$ 100,000</p>
+        </div>
+        <div *ngIf="accountDetails" class="list-item-price">
+          J$ {{ accountDetails.walletLimit }}
+        </div>
+      </li>
+      <li class="list-item price">
+        <div class="list-item-text">
+          <h4>Transfer - Daily Limit</h4>
+          <p *ngIf="!hasMaxAccount">Upgrade to MyCash MAX for an enhanced limit of J$ 100,000</p>
+        </div>
+        <div *ngIf="accountDetails" class="list-item-price">
+          J$
+        </div>
+      </li>
+    </ul>
+  </div>
+  <ng-template #loader>
+    <!-- <app-loading-screen></app-loading-screen> -->
+  </ng-template>
+</div>

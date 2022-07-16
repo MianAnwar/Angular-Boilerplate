@@ -1,0 +1,35 @@
+<div class="page-widget edit-profile-widget">
+  <div class="edit-profile-body page-widget-body">
+    <!-- back btn html -->
+    <!-- <app-nav (backEvent)="back()" [backButton]="true" navText="Add Email Address"></app-nav> -->
+    <!-- back btn html end -->
+
+    <!-- form widget html -->
+    <div class="form-widget-body">
+      <!-- form field html -->
+      <form [formGroup]="form">
+        <div class="form-widget-fields">
+          <div class="form-widget-fields-item">
+            <label for="" class="title">Email Address</label>
+            <div class="fieldWraper">
+              <input type="text" placeholder="Enter your email address" formControlName="emailAddress"
+                class="form-control" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- form field html end -->
+
+      <!-- form widget footer html -->
+      <div class="form-widget-footer">
+        <!-- form btn html -->
+        <button (click)="verifyEmail()" [disabled]="form.invalid" class="btn btn-gradient">
+          Save
+        </button>
+        <!-- form btn html end -->
+      </div>
+      <!-- form widget footer html end -->
+    </div>
+    <!-- form widget html end -->
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="signUp-stepper-widget-head">
+  <h2>Almost Done</h2>
+  <p>Set up your PIN & Secret Question</p>
+</div>
+<div class="signUp-stepper-widget-form signUp-stepper-widget-step3-form">
+  <form #ngForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="enter-pin-widget">
+      <label>Enter Pin</label>
+      <div class="pin-fields">
+        <!-- <app-custom-input-otp (inputEvent)="pinInputEvent($event)" [length]="length"></app-custom-input-otp> -->
+      </div>
+    </div>
+
+    <div [class.enter-pin-error-widget]="pinMatch" class="enter-pin-widget">
+      <label>Re-Enter Pin</label>
+      <div class="pin-fields">
+        <!-- <app-custom-input-otp (inputEvent)="_pinInputEvent($event)" [length]="length"></app-custom-input-otp> -->
+      </div>
+    </div>
+    <div class="enter-pin-widget">
+      <label>Secret Question</label>
+      <!-- <select formControlName="secretQuestion" name="secretQuestion" id="" class="form-control">
+        <option value="" disabled selected>Select your option</option>
+        <option *ngFor="let item of questions" [value]="item.id">
+          {{ item.question }}
+        </option>
+      </select> -->
+      <input *ngIf="form.controls['secretQuestion'].valid" formControlName="secretAnswer" type="text"
+        class="form-control" value="Ninja Turtle" />
+      <p>This will be required to verify you if you ever forget your MyCash PIN</p>
+    </div>
+
+    <button [disabled]="(!form.valid && !submitted) || submitted" class="btn btn-gradient" type="submit">
+      All Done
+    </button>
+  </form>
+</div>

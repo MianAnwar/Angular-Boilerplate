@@ -1,0 +1,26 @@
+<div class="page-widget edit-profile-widget">
+  <div class="edit-profile-body page-widget-body">
+    <!-- <app-nav (backEvent)="back()" [backButton]="true" navText="Add Source Of Income"></app-nav> -->
+
+    <div class="form-widget-body">
+      <div [formGroup]="form" class="form-widget-fields">
+        <div class="form-widget-fields-item">
+          <label for="" class="title">Source of Income</label>
+          <div class="fieldWraper">
+            <select class="form-control" formControlName="sourceOfIncome">
+              <option value="" disabled selected>Source of Income</option>
+              <option value="{{ x.value }}" *ngFor="let x of sourceOfIncome">
+                {{ x.label }}
+              </option>
+            </select>
+            <img src="assets/images/arrow-down-icon.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-widget-footer">
+        <button (click)="save()" [disabled]="form.invalid" class="btn btn-gradient">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

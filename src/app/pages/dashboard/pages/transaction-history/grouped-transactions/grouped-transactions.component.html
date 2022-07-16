@@ -1,0 +1,20 @@
+<ul class="trans-history-list_body">
+  <li *ngFor="let x of transactionsHistory">
+    <div class="trans-history-list_icon">
+      <i class="icon-up-circle-arrow error" *ngIf="!x.direction"></i>
+      <i class="icon-down-circle-arrow success" *ngIf="x.direction"></i>
+    </div>
+    <div class="trans-history-list_content">
+      <div class="content">
+        <h6>
+          <small><b>FROM:</b></small> {{ x.InitiatorName }}
+        </h6>
+        <p>{{ x.Details }}</p>
+      </div>
+      <span class="amount"
+        ><span *ngIf="!x.direction">-</span><span *ngIf="x.direction">+</span> {{ x.Currency }}
+        <span>{{ x.Amount }}</span></span
+      >
+    </div>
+  </li>
+</ul>

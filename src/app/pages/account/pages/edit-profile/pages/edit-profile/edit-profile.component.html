@@ -1,0 +1,74 @@
+<div class="page-widget edit-profile-widget">
+  <div class="edit-profile-body page-widget-body">
+    <!-- <app-nav (backEvent)="back()" [backButton]="true" navText="My Profile"></app-nav> -->
+
+    <div class="profile-container">
+      <div class="profile_avatar">
+        <img [src]="userProfile.image ?? '/assets/images/profile-img.jpg'" alt="profile-img" />
+      </div>
+
+      <!-- <input type="file" accept="image/jpeg, image/png" style="display: none"
+        (change)="onFileChange($event.target.files)" #fileInput /> -->
+      <!-- <button class="btn btn-white" (click)="triggerSelectFile(fileInput)">Edit</button> -->
+
+      <div class="profile_content">
+        <h1>Clara Fraser</h1>
+        <span>+1-658-1234567</span>
+      </div>
+    </div>
+
+    <ul class="arrow-list-item profile-detail-container">
+      <li class="profile-detail_list">
+        <div class="profile-detail_icon">
+          <img src="/assets/images/trn-transfer-icon.svg" alt="" />
+        </div>
+        <div class="profile-detail_content">
+          <span class="profile-detail_title">TRN</span>
+          <span class="profile-detail_value">*** *** 333</span>
+        </div>
+      </li>
+      <li class="profile-detail_list" (click)="addEmail()">
+        <div class="profile-detail_icon">
+          <img src="/assets/images/email-icon.svg" alt="" />
+        </div>
+        <div class="profile-detail_content">
+          <span class="profile-detail_title">Email Address</span>
+          <span class="profile-detail_value" *ngIf="userProfile && userProfile.emailAddressOPTVerified">{{
+            userProfile.emailAddress }}</span>
+        </div>
+        <i class="icon-right-arrow"></i>
+      </li>
+      <li class="profile-detail_list" (click)="addSteetAddress()">
+        <div class="profile-detail_icon">
+          <img src="/assets/images/map-pin-icon.svg" alt="" />
+        </div>
+        <div class="profile-detail_content">
+          <span class="profile-detail_title">Street Address</span>
+          <span class="profile-detail_value" *ngIf="userProfile.fullAddress">{{ userProfile.fullAddress }}, {{
+            userProfile.town }}, {{ userProfile.parish }}</span>
+        </div>
+        <i class="icon-right-arrow"></i>
+      </li>
+      <li class="profile-detail_list" (click)="addSourceOfIncome()">
+        <div class="profile-detail_icon">
+          <img src="/assets/images/wallet-icon.svg" alt="" />
+        </div>
+        <div class="profile-detail_content">
+          <span class="profile-detail_title">Source of Income</span>
+          <span class="profile-detail_value">{{ userProfile.sourceOfIncome }}</span>
+        </div>
+        <i class="icon-right-arrow"></i>
+      </li>
+    </ul>
+
+    <!-- <button (click)="addEmail()">add email address</button> 
+      <button (click)="addSteetAddress()">add street address</button>
+      <button (click)="addSourceOfIncome()">add source of income</button>-->
+    <div class="pageFooter">
+      <div class="btns-container">
+        <button type="submit" class="btn btn-white">Cancel Changes</button>
+        <button type="submit" class="btn btn-gradient">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

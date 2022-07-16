@@ -1,0 +1,19 @@
+<!-- <app-nav
+  [backButton]="!isEditMode"
+  [discardButton]="isEditMode"
+  [saveButton]="isEditMode"
+  [navText]="Header"
+  (saveEvent)="saveWidgets()"
+  (discardEvent)="cancelChanges()"
+  (backEvent)="goBack()"
+></app-nav> -->
+
+<app-widget [groupedWidgets]="shortcutWidgets" [isShortcut]="true" [screen]="isEditMode ? CATEGORIES_EDIT : CATEGORIES"
+  [showEditLink]="true" (removeShortcutHandler)="removeShortcut($event)">
+</app-widget>
+
+<app-widget [groupedWidgets]="allWidgets" [screen]="isEditMode ? CATEGORIES_EDIT : CATEGORIES"
+  (addShortcutHandler)="addShortcut($event)">
+</app-widget>
+
+<!-- <app-loading-screen *ngIf="loader.widgets"> </app-loading-screen> -->

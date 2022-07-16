@@ -1,0 +1,60 @@
+<!-- Account Suspended Start -->
+<!-- <div class="row account-suspended-container">
+    <div class="col-sm-12">
+        <div class="account-suspended">
+            <i class="icon-info-round"></i>
+            <div class="content">
+                <h6>Account Suspended</h6>
+                <p>Please get in touch with our Contact Center to restore your account</p>
+            </div>
+            
+        </div>
+    </div>
+</div> -->
+<!-- Account Suspended End -->
+
+<!-- Waller Card Start -->
+<div class="row">
+  <div class="col">
+    <div class="wallet-card">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+          <div class="wallet-card_content">
+            <div class="content">
+              <h4>MyCash Wallet</h4>
+              <div class="amount_container">
+                <h1>
+                  {{ defaultCurrency }}
+                  <ng-container *ngIf="showBalance">
+                    <!-- <span class="amount">{{
+                      balance?.amount | mycashCurrencyFormat: defaultCurrency:'true':'true'
+                    }}</span> -->
+                    <span class="amount_decimal">.{{ balance?.decimal }}</span>
+                  </ng-container>
+                  <span *ngIf="!showBalance" class="amount_decimal">*****</span>
+                </h1>
+                <i *ngIf="showBalance" class="icon-info-round"></i>
+              </div>
+            </div>
+            <div class="wallet-card_eye">
+              <i [class]="showBalance ? 'icon-close-eye' : 'icon-open-eye'" (click)="toggleEye()"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6">
+          <div class="wallet-card_btns">
+            <button (click)="navigateToCashIn()" class="btn add-money-btn btn-white">
+              <i class="icon-plus"></i>
+              <span>Add Money</span>
+            </button>
+            <button class="btn withdraw-btn btn-transparent">
+              <i class="icon-minus"></i>
+              <span>Withdraw Cash</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Waller Card End -->

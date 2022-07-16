@@ -1,0 +1,58 @@
+<<div class="page-widget edit-profile-widget">
+  <div class="edit-profile-body page-widget-body">
+    <!-- back btn html -->
+    <!-- <app-nav (backEvent)="back()" [backButton]="true" navText="Add Street Address"></app-nav> -->
+    <!-- back btn html end -->
+
+    <!-- form widget html -->
+    <div class="form-widget-body">
+      <!-- form field html -->
+      <div [formGroup]="form" class="form-widget-fields">
+        <div class="form-widget-fields-item">
+          <label for="" class="title">Parish</label>
+          <div class="fieldWraper">
+            <!-- <select (change)="getTown($event.target.value)" name="parish" formControlName="parish" class="form-control">
+              <option value="" disabled selected>Select Parish</option>
+              <option *ngFor="let parish of parish" [value]="parish.parishName">
+                {{ parish.parishName }}
+              </option>
+            </select> -->
+            <img src="/assets/images/map-icon.svg" />
+          </div>
+        </div>
+
+        <div *ngIf="form.controls['parish'].valid" class="form-widget-fields-item">
+          <label for="" class="title">Town</label>
+          <div class="fieldWraper">
+            <select formControlName="town" name="town" id="" class="form-control">
+              <option value="" disabled selected>Select Town</option>
+              <option *ngFor="let town of town" [value]="town">
+                {{ town }}
+              </option>
+            </select>
+            <img src="/assets/images/map-icon.svg" />
+          </div>
+        </div>
+
+        <div class="form-widget-fields-item">
+          <label for="" class="title">Full Address</label>
+          <div class="fieldWraper">
+            <!-- <input type="text" placeholder="Enter complete address" class="form-control"> -->
+            <textarea class="form-control" formControlName="fullAddress"
+              placeholder="Enter complete address"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- form field html end -->
+
+      <!-- form widget footer html -->
+      <div class="form-widget-footer">
+        <!-- form btn html -->
+        <button (click)="save()" [disabled]="form.invalid" class="btn btn-gradient">Save</button>
+        <!-- form btn html end -->
+      </div>
+      <!-- form widget footer html end -->
+    </div>
+    <!-- form widget html end -->
+  </div>
+  </div>>

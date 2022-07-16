@@ -1,0 +1,16 @@
+<div class="signUp-stepper-widget-form change-pin-widget page-widget">
+  <div class="change-pin-widget-body page-widget-body">
+    <!-- <app-nav [backButton]="true" navText="Change Pin" (backEvent)="back()"></app-nav> -->
+    <div class="enter-pin-widget">
+      <label>Enter Current PIN</label>
+      <div class="pin-fields">
+        <!-- <app-custom-input-otp (inputEvent)="pinInputEvent($event)" [length]="pinLength">
+        </app-custom-input-otp> -->
+      </div>
+    </div>
+
+    <button [disabled]="(!form.valid && !submitted) || submitted" (click)="next()" class="btn btn-gradient">
+      next
+    </button>
+  </div>
+</div>

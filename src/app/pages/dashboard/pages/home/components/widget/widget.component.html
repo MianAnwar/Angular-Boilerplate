@@ -1,0 +1,55 @@
+<div class="row">
+  <div
+    class="col-sm-12 col-md-12 col-lg-6"
+    *ngFor="let widgetgroup of groupedWidgets; let i = index"
+  >
+    <div class="title-container">
+      <h3 class="sub-title">{{ widgetgroup?.cardName }}</h3>
+      <a *ngIf="showBrowseAllLink && i === 0" [routerLink]="categoriesUrl" class="link">
+        Browse All
+      </a>
+      <a
+        *ngIf="showEditLink && isCategories && !isCategoryEdit"
+        [routerLink]="categoriesEditUrl"
+        class="link"
+      >
+        Edit
+      </a>
+      <ng-content></ng-content>
+    </div>
+    <div class="tiles-container">
+      <h5 *ngIf="isCategoryEdit && isShortcut" class="add-top-features">
+        Add your top 8 MyCash features
+      </h5>
+      <ul class="tiles_list">
+        <ng-container *ngFor="let widget of widgetgroup.widgets">
+          <ng-container *ngIf="!widget.hideWidget">
+            <li *ngIf="!widget.isEmpty" class="tile">
+              <a (click)="iconHandler(widget)" class="tile_box">
+                <ng-container *ngIf="!widget?.isEditMode">
+                  <span *ngIf="widget?.categoryStatus === NEW" class="new-badge">New</span>
+                </ng-container>
+                <span
+                  *ngIf="widget?.isEditMode && !widget?.isShortcut"
+                  class="add-tile edit-tile"
+                  (click)="addShortcut(widget)"
+                ></span>
+                <span
+                  *ngIf="widget?.isEditMode && widget?.isShortcut"
+                  class="remove-tile edit-tile"
+                  (click)="removeShortcut(widget)"
+                ></span>
+                <img *ngIf="widget?.categoryIcon" [src]="widget?.categoryIcon" alt="Top up" />
+              </a>
+              <span class="tiles_label">{{ widget?.categoryName }}</span>
+            </li>
+            <li *ngIf="widget.isEmpty" class="tile empty_tile">
+              <a href="#" class="tile_box empty_box"> </a>
+              <span class="tiles_label empty_label"></span>
+            </li>
+          </ng-container>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>
